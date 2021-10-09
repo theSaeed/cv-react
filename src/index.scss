@@ -3,11 +3,16 @@
 	--clr-1: #07D;
 	--clr-2: #F28;
 	--opc-bg: 0.5;
+	--section-bn: 1.125;
+	--clr-bg: black;
+	--opc-bg: 0.5;
+	--section-bn: 0.875;
 }
 
 [data-theme="dark"] {
 	--clr-bg: black;
 	--opc-bg: 0.5;
+	--section-bn: 0.875;
 }
 
 *, *::before, *::after {
@@ -16,8 +21,10 @@
 	padding: 0;
 }
 
-body {
+html, body {
 	background-color: var(--clr-bg);
+	max-width: 100%;
+	overflow-x: hidden;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
 		sans-serif;
@@ -28,6 +35,10 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+
+.app {
+	position: absolute;
 }
 
 .bg {
@@ -61,5 +72,33 @@ code {
 		background-color: var(--clr-bg);
 		mix-blend-mode: overlay;
 		opacity: var(--opc-bg);
+	}
+}
+
+.sidebar-frame {
+	position: absolute;
+	width: calc(100% + 0.25em);
+	height: calc(100% - 7em);
+	top: -0.125em;
+	right: -0.125em;
+	border: 0.125em solid rgba(255, 255, 255, 0.125);
+	backdrop-filter: blur(2em) brightness(var(--section-bn));
+	transition: width 0.25s ease-out, height 0.25s ease-out;
+
+	@media screen and (min-width: 60em) {
+		position: fixed;
+		width: 20em;
+		height: calc(100% + 0.25em);
+	}
+
+	.sidebar-texture {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('./contents/cards/texture.png');
+		background-repeat: repeat;
+		background-position: center;
+		opacity: 0.02;
 	}
 }
